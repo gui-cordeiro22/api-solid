@@ -3,3 +3,4 @@ build
 .nvmrc
 .env
 /generated/prisma
+personal-notes.md
