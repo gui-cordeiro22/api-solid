@@ -16,7 +16,7 @@ app.post("/users", async (request, response) => {
 
     const { name, email, password } = registerBodySchema.parse(request.body);
 
-    await prisma.user.create({
+    await prisma?.user?.create({
         data: {
             name,
             email,
