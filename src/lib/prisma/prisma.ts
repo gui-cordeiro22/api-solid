@@ -1,18 +1,12 @@
 // Dependencies
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { Pool } from "pg";
-import { PrismaPg } from "@prisma/adapter-pg";
 
+// Configs
+import { adapter, globalForPrisma } from "./prisma.config";
+
+// Utils
 import { env } from "@/env";
-
-const connectionString = process.env.DATABASE_URL!;
-const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool);
-
-const globalForPrisma = globalThis as unknown as {
-    prisma: PrismaClient | undefined;
-};
 
 export const prisma =
     globalForPrisma.prisma ??
