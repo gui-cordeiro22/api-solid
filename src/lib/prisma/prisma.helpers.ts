@@ -21,7 +21,7 @@ export const getPrismaClient = () => {
     if (!!globalForPrisma.prisma) {
         response = globalForPrisma.prisma;
     } else {
-        new PrismaClient({
+        response = new PrismaClient({
             adapter,
             log: env.NODE_ENV === "dev" ? ["query"] : [],
         });
