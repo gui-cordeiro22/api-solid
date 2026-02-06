@@ -1,6 +1,8 @@
 // Dependencies
 import { FastifyReply, FastifyRequest } from "fastify";
-import z from "zod";
+
+// Schema
+import { registerBodySchema } from "./register.schema";
 
 // Database
 import { registerService } from "@/services/register/register";
@@ -9,12 +11,6 @@ export const register = async (
     request: FastifyRequest,
     response: FastifyReply,
 ) => {
-    const registerBodySchema = z.object({
-        name: z.string(),
-        email: z.string().email(),
-        password: z.string().min(6),
-    });
-
     const { name, email, password } = registerBodySchema.parse(request.body);
 
     try {
