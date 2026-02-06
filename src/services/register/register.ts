@@ -7,6 +7,9 @@ import { prisma } from "@/lib/prisma";
 // Types
 import { RegisterServiceProps } from "./register.types";
 
+// Repository
+import { PrismaUsersRepository } from "@/repositories/prisma-users-repository";
+
 export const registerService = async ({
     name,
     email,
@@ -14,7 +17,7 @@ export const registerService = async ({
 }: RegisterServiceProps) => {
     const password_hash = await hash(password, 6);
 
-    const userWithSameEmail = prisma.user.findUnique({
+    const userWithSameEmail = await prisma.user.findUnique({
         where: {
             email,
         },
@@ -24,11 +27,11 @@ export const registerService = async ({
         throw new Error("E-mail already exists");
     }
 
-    await prisma?.user?.create({
-        data: {
-            name,
-            email,
-            password_hash,
-        },
+    const prismaUsersRepository = new PrismaUsersRepository();
+
+    await prismaUsersRepository.create({
+        name,
+        email,
+        password_hash,
     });
 };

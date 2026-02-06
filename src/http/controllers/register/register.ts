@@ -20,6 +20,8 @@ export const register = async (
             password,
         });
     } catch (error) {
+        console.error(error);
+
         return response.status(409).send();
     }
 
