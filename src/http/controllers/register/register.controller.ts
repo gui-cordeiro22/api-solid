@@ -5,7 +5,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { registerBodySchema } from "./register.schema";
 
 // Services
-import { RegisterService } from "@/services/register/register";
+import { RegisterService } from "@/services/register";
 
 // Repository
 import { PrismaUsersRepository } from "@/repositories/prisma-users-repository";
