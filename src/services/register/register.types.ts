@@ -1,3 +1,6 @@
+// Types
+import { User } from "@prisma/client";
+
 export type RegisterServiceRequest = {
     name: string;
     email: string;
@@ -5,3 +8,5 @@ export type RegisterServiceRequest = {
 };
 
 export type RegisterServiceProps = RegisterServiceRequest;
+
+export type RegisterServiceResponse = { user: User };
