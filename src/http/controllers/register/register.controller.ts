@@ -34,7 +34,7 @@ export const register = async (
             return response.status(409).send({ message: error.message });
         }
 
-        return response.status(500).send(); //TODO: Do a better logic for errors
+        throw error;
     }
 
     return response.status(201).send();
