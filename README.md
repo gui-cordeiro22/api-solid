@@ -10,7 +10,7 @@
 - [x] Eu, como usuário, desejo que seja possível me autenticar na aplicação;
 - [x] Eu, como usuário, desejo que seja possível acessar o meu perfil quando estiver logado;
 - [] Eu, como usuário, desejo obter o nº de check-ins realizados pelo usuário logado;
-- [] Eu, como usuário, desejo ter acesso ao meu histórico de check-ins;
+- [x] Eu, como usuário, desejo ter acesso ao meu histórico de check-ins;
 - [] Eu, como usuário, desejo que seja possível buscar academias próximas a mim ao usar a aplicação;
 - [] Eu, como usuário, desejo conseguir buscar uma academia específica pelo seu nome;
 - [x] Eu, como usuário, desejo conseguir realizar check-in em uma academia;
@@ -34,5 +34,5 @@
 
 - [x] A senha do usuário precisa estar criptografada;
 - [] Os dados da aplicação precisam estar persistidos em um banco PostgreSQL;
-- [] Todas as listas de dados precisam estar paginadas com 20 itens por páginas;
+- [x] Todas as listas de dados precisam estar paginadas com 20 itens por páginas;
 - [] o usuário deve ser identificado por um JWT (JSON Web Token);
