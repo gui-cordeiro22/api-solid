@@ -36,7 +36,7 @@ describe("Authenticate Service", () => {
     });
 
     test("shouldn't be able to authenticate user with wrong email", async () => {
-        expect(() =>
+        await expect(() =>
             authenticateService.execute({
                 email: "johndoe@test.com",
                 password: "123456",
@@ -51,7 +51,7 @@ describe("Authenticate Service", () => {
             password_hash: await hash("123456", 6),
         });
 
-        expect(() =>
+        await expect(() =>
             authenticateService.execute({
                 email: "johndoe@test.com",
                 password: "123123",
