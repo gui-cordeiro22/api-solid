@@ -4,3 +4,4 @@ build
 .env
 /generated/prisma
 personal-notes.md
+coverage
