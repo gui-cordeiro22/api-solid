@@ -22,8 +22,8 @@
 /_Caminhos que a aplicação pode tomar_/
 
 - [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [] O usuário não pode fazer 2 check-ins no mesmo dia;
-- [] O usuário não pode fazer check-in se não estiver próximo o suficiente (100m) da academia;
+- [x] O usuário não pode fazer 2 check-ins no mesmo dia;
+- [x] O usuário não pode fazer check-in se não estiver próximo o suficiente (100m) da academia;
 - [] O check-in só pode ser validado até 20min após criado;
 - [] O check-in só pode ser validado por administradores;
 - [] A academia só pode ser cadastrada por administradores;
