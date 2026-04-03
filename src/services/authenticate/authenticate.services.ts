@@ -1,7 +1,7 @@
 // Dependencies
 import { compare } from "bcryptjs";
 
-// Error
+// Utils
 import { InvalidCredentialsError } from "@/errors/invalid-credentials";
 
 // Types

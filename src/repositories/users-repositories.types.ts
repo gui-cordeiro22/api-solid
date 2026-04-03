@@ -2,8 +2,9 @@
 import { Prisma, User } from "@prisma/client";
 
 export type UsersRepositoryActions = {
-    findByEmail(email: string): Promise<User | null>;
     create(data: Prisma.UserCreateInput): Promise<User>;
+    findByEmail(email: string): Promise<User | null>;
+    findById(id: string): Promise<User | null>;
 };
 
 export type UsersRepositoryProps = UsersRepositoryActions;

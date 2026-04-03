@@ -7,7 +7,7 @@
 /_Feature e funcionalidades da aplicação_/
 
 - [x] Eu, como usuário, desejo que seja possível me cadastrar na aplicação;
-- [] Eu, como usuário, desejo que seja possível me autenticar na aplicação;
+- [x] Eu, como usuário, desejo que seja possível me autenticar na aplicação;
 - [] Eu, como usuário, desejo que seja possível acessar o meu perfil quando estiver logado;
 - [] Eu, como usuário, desejo obter o nº de check-ins realizados pelo usuário logado;
 - [] Eu, como usuário, desejo ter acesso ao meu histórico de check-ins;
