@@ -5,6 +5,8 @@ import { GymsRepositoryProps } from "@/repositories/gym-repository/gym-repositor
 
 // Utils
 import { ResourceNotFoundError } from "@/errors/resource-not-found";
+import { MaxNumberOfCheckInsError } from "@/errors/max-number-of-check-ins";
+import { MaxDistanceError } from "@/errors/max-distance";
 import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates";
 
 export class CheckInService {
@@ -39,7 +41,7 @@ export class CheckInService {
         const MAX_DISTANCE_IN_KILOMETERS = 0.1;
 
         if (distance > MAX_DISTANCE_IN_KILOMETERS) {
-            throw new Error();
+            throw new MaxDistanceError();
         }
 
         const checkInOnSameDay =
@@ -49,7 +51,7 @@ export class CheckInService {
             );
 
         if (!!checkInOnSameDay) {
-            throw new Error();
+            throw new MaxNumberOfCheckInsError();
         }
 
         const checkIn = await this.checkinsRepository.create({

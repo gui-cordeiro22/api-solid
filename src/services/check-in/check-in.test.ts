@@ -1,31 +1,34 @@
 // Dependencies
 import { expect, describe, test, beforeEach, vi, afterEach } from "vitest";
-import { Decimal } from "@prisma/client/runtime/client";
-
-// Service
-import { CheckInService } from "./check-in.services";
 
 // Repository
 import { InMemoryCheckInsRepository } from "@/repositories/in-memory-users-repository/in-memory-check-ins-repository";
 import { InMemoryGymsRepository } from "@/repositories/in-memory-users-repository/in-memory-gyms-repository";
+
+// Service
+import { CheckInService } from "./check-in.services";
+
+// Utils
+import { MaxNumberOfCheckInsError } from "@/errors/max-number-of-check-ins";
+import { MaxDistanceError } from "@/errors/max-distance";
 
 let checkInRepository: InMemoryCheckInsRepository;
 let gymsRepository: InMemoryGymsRepository;
 let checkInService: CheckInService;
 
 describe("Check-in Service", () => {
-    beforeEach(() => {
+    beforeEach(async () => {
         checkInRepository = new InMemoryCheckInsRepository();
         gymsRepository = new InMemoryGymsRepository();
         checkInService = new CheckInService(checkInRepository, gymsRepository);
 
-        gymsRepository.items.push({
+        await gymsRepository.create({
             id: "gym-01",
             title: "JavaScript Gym",
-            description: "",
-            phone: "",
-            latitude: new Decimal(-22.4682375),
-            longitude: new Decimal(-43.1456466),
+            description: null,
+            phone: null,
+            latitude: -22.4682375,
+            longitude: -43.1456466,
         });
 
         vi.useFakeTimers();
@@ -65,7 +68,7 @@ describe("Check-in Service", () => {
                 userLatitude: -22.4682375,
                 userLongitude: -43.1456466,
             }),
-        ).rejects.toBeInstanceOf(Error);
+        ).rejects.toBeInstanceOf(MaxNumberOfCheckInsError);
     });
 
     test("should be able to check in twice but in different days", async () => {
@@ -91,13 +94,13 @@ describe("Check-in Service", () => {
     });
 
     test("shouldn't be able to check in on distant gym", async () => {
-        gymsRepository.items.push({
+        await gymsRepository.create({
             id: "gym-02",
             title: "NodeJs Gym",
-            description: "",
-            phone: "",
-            latitude: new Decimal(-22.4482152),
-            longitude: new Decimal(-43.1440784),
+            description: null,
+            phone: null,
+            latitude: -22.4482152,
+            longitude: -43.1440784,
         });
 
         await expect(() =>
@@ -107,6 +110,6 @@ describe("Check-in Service", () => {
                 userLatitude: -22.4682375,
                 userLongitude: -43.1456466,
             }),
-        ).rejects.toBeInstanceOf(Error);
+        ).rejects.toBeInstanceOf(MaxDistanceError);
     });
 });
