@@ -13,7 +13,7 @@
 - [] Eu, como usuário, desejo ter acesso ao meu histórico de check-ins;
 - [] Eu, como usuário, desejo que seja possível buscar academias próximas a mim ao usar a aplicação;
 - [] Eu, como usuário, desejo conseguir buscar uma academia específica pelo seu nome;
-- [] Eu, como usuário, desejo conseguir realizar check-in em uma academia;
+- [x] Eu, como usuário, desejo conseguir realizar check-in em uma academia;
 - [] Eu, como time de desenvolvimento, desejo que seja possível validar o check-in de um usuário;
 - [] Eu, como time de desenvolvimento, desejo que seja possível cadastrar uma academia;
 
